@@ -15,7 +15,7 @@ print the percentiles (p90, p95, p99) according to the requirement
 
 The usage example could be referred in `src/main/java/demo/Demo.java`
 
-### Project Structure:
+### Project Structure
 1. **src/main/java/calculator/PercentileCalculator.java:**  
 Percentiles Calculator
 2. **src/main/java/demo/Demo.java:**  
@@ -31,10 +31,10 @@ Main program for generating testcase
 7. **testcase/\*.log**  
 testcases
 
-### Assumptions
+## Assumptions
 Response time is range from `0~9999` ms  
 
-### Algorithm
+## Algorithm
 
 Create response time buckets with index from 0~9999. The bucket's index represents
  the response time. The bucket's value is an integer represents the occurrence counter 
@@ -59,7 +59,7 @@ public void processLogFile(String logFilePath) throws Exception {
 
 ```
 
-#### Update Response Time Buckets
+### Update Response Time Buckets
 Iterate each log line by line and increase the corresponding response time's
 occurrence counter.
 
@@ -72,7 +72,7 @@ private void updateBucket(String log) throws Exception {
     //please refer this function
 }
 ```
-#### Update Current Percentiles
+### Update Current Percentiles
 Iterate all the response buckets, and count up for the response
  time occurrence. If current percentage is over than the target percentage, it's the point
  where the target percentile is.
