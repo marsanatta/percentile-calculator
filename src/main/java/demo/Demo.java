@@ -25,7 +25,7 @@ public class Demo {
 
     private static void printPercentiles(int[] percentiles) {
         for (int i = 0; i < percentiles.length; i++)
-            System.out.print("p" + PERCENTILES[i] + ":" + percentiles[i] + "(ms) ");
+            System.out.print(PERCENTILES[i] + "% of requests return a response in " + percentiles[i] + " ms\n");
         System.out.println();
     }
 }

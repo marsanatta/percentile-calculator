@@ -9,10 +9,10 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class PercentileCalculator {
-    public static final int TIMEOUT_MS = 100000;
+    public static final int TIMEOUT_MS = 10000;
+    private int[] responseTimeBuckets = new int[TIMEOUT_MS];
     public static final int PARTS_LEN = 6;
     public static final String DELIMITER = " ";
-    private int[] responseTimeBuckets = new int[TIMEOUT_MS];
     private int responseTimeTotalCnt = 0;
     public static final int[] PERCENTILES = {90, 95, 99};
 
