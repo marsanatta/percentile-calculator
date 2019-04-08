@@ -6,15 +6,16 @@ takes a log file path as an input. The function calculates the p90, p95, p99 by 
 combining with previous calculated logs' data, so that if new log file comes in, it don't have 
 to re-calculated previous log file again which is more efficient.   
 
+### Percentile Calculator Class
 The main class is PercentileCalculator  
 2 public APIs is exposed:
 - **processLogFile(String logFilePath)** processes the log file and update the current percentiles
 - **printPercentiles()**
 print the percentiles (p90, p95, p99) according to the requirement
 
-The example could be referred in `src/main/java/demo/Demo.java`
+The usage example could be referred in `src/main/java/demo/Demo.java`
 
-Project Structure:
+### Project Structure:
 1. **src/main/java/calculator/PercentileCalculator.java:**  
 Percentiles Calculator
 2. **src/main/java/demo/Demo.java:**  
@@ -163,6 +164,3 @@ To generate the new test cases:
 ./gradlew build
 ./gradlew genTestcase
 ```
-
-## Project Structure
-
