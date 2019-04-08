@@ -12,7 +12,23 @@ The main class is PercentileCalculator
 - **printPercentiles()**
 print the percentiles (p90, p95, p99) according to the requirement
 
-The example could be refer in `src/main/java/demo/Demo.java`
+The example could be referred in `src/main/java/demo/Demo.java`
+
+Project Structure:
+1. **src/main/java/calculator/PercentileCalculator.java:**  
+Percentiles Calculator
+2. **src/main/java/demo/Demo.java:**  
+Main program for demo
+3. **src/main/java/util/HttpCode.java**  
+Http code enums
+4. **src/main/java/util/HttpVerb.java**  
+Http verb enums
+5. **src/main/java/util/RandomHelper.java**  
+Helper to generate random log data
+6. **src/main/java/util/TestcaseGenerator.java**   
+Main program for generating testcase
+7. **testcase/\*.log**  
+testcases
 
 ### Assumptions
 Response time is range from `0~9999` ms  
@@ -149,18 +165,4 @@ To generate the new test cases:
 ```
 
 ## Project Structure
-1. **src/main/java/calculator/PercentileCalculator.java:**  
-Percentiles Calculator.
-2. **src/main/java/demo/Demo.java:**  
-Main program for demo.
-3. **src/main/java/util/HttpCode.java**  
-Http code enums
-4. **src/main/java/util/HttpVerb.java**  
-Http verb enums
-5. **src/main/java/util/RandomHelper.java**  
-Helper to generate random log data
-6. **src/main/java/util/TestcaseGenerator.java**   
-Main program for generating testcase
-7. **testcase/\*.log**  
-testcases
 
