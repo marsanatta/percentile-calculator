@@ -49,8 +49,8 @@ public class RandomHelper {
     }
 
     /**
-     * ABNORMAL_PERCENT% of response time in [MAX_RESPONSE_TIME_MS, ABNORMAL_MAX_RESPONSE_TIME_MS]
-     * 100 - ABNORMAL_PERCENT% of response times in [MIN_RESPONSE_TIME_MS, MAX_RESPONSE_TIME_MS]
+     * ABNORMAL_PERCENT% of response times are in range [MAX_RESPONSE_TIME_MS, ABNORMAL_MAX_RESPONSE_TIME_MS]
+     * 100 - ABNORMAL_PERCENT% of response times are in range [MIN_RESPONSE_TIME_MS, MAX_RESPONSE_TIME_MS]
      */
     public static final int ABNORMAL_PERCENT = 5;
     public static final int ABNORMAL_MAX_RESPONSE_TIME_MS = 10000;

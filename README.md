@@ -52,18 +52,20 @@ Response Time Buckets: `O(10000) = O(1)`
 Linux or Mac environment that can execute java(1.8) and gradle
 
 ### Run Demo (src/main/java/demo/Demo.java)
+This demo program will process log files in testcases and output the current percentiles
 ```$java
 ./gradlew build
 ./gradlew run
 ```
 ### Generate New Test Cases (src/main/java/util/TestcaseGenerator.java)
-There are some values to play with. 
+Instead of using orignal test cases, you can also generate your own test cases.  
+There are some values to play with.  
 
 in RandomHelper.java:
 ```$xslt
 /**
- * ABNORMAL_PERCENT% of response time in [MAX_RESPONSE_TIME_MS, ABNORMAL_MAX_RESPONSE_TIME_MS]
- * 100 - ABNORMAL_PERCENT% of response times in [MIN_RESPONSE_TIME_MS, MAX_RESPONSE_TIME_MS]
+ * ABNORMAL_PERCENT% of response times are in range [MAX_RESPONSE_TIME_MS, ABNORMAL_MAX_RESPONSE_TIME_MS]
+ * 100 - ABNORMAL_PERCENT% of response times are in range [MIN_RESPONSE_TIME_MS, MAX_RESPONSE_TIME_MS]
  */
 public static final int ABNORMAL_PERCENT = 5;
 public static final int ABNORMAL_MAX_RESPONSE_TIME_MS = 10000;
@@ -74,7 +76,7 @@ The above settings means:
 5% response time in [5000, 10000] (ms)  
 95% response time in [500, 5000] (ms)
 
-To generate the test case:
+To generate the new test cases:
 ```$java
 ./gradlew build
 ./gradlew genTestcase
