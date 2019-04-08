@@ -12,6 +12,7 @@ The main class is PercentileCalculator
 - **printPercentiles()**
 print the percentiles (p90, p95, p99) according to the requirement
 
+The example could be refer in `src/main/java/demo/Demo.java`
 
 ### Assumptions
 Response time is range from `0~9999` ms  
