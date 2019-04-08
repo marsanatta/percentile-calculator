@@ -1,10 +1,17 @@
 # Percentile Calculator
 ## Introduction
 I modified the requirement to make it more practical.
-Rather than calculating all the logs every time, I create a function that
+Rather than calculating all log files every time, I create a function that
 takes a log file path as an input. The function calculates the p90, p95, p99 by calculating the input log
 combining with previous calculated logs' data, so that if new log file comes in, it don't have 
-to re-calculated previous log file again which is more efficient. 
+to re-calculated previous log file again which is more efficient.   
+
+The main class is PercentileCalculator  
+2 public APIs is exposed:
+- **processLogFile(String logFilePath)** processes the log file and update the current percentiles
+- **printPercentiles()**
+print the percentiles (p90, p95, p99) according to the requirement
+
 
 ### Assumptions
 Response time is range from `0~9999` ms  
@@ -48,8 +55,8 @@ private void updateBucket(String log) throws Exception {
 }
 ```
 #### Update Current Percentiles
-Iterate all the response buckets, count up for the response
- time occurrence, if current percentage is over than the target percentage, it's the point
+Iterate all the response buckets, and count up for the response
+ time occurrence. If current percentage is over than the target percentage, it's the point
  where the target percentile is.
 
 PercentileCalculator.java:
