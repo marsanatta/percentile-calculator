@@ -7,7 +7,7 @@ combining with previous calculated logs' data, so that if new log file comes in,
 to re-calculated previous log file again which is more efficient and practical. 
 
 ### Assumptions
-Response time is range from `0~9999` ms
+Response time is range from `0~9999` ms  
 
 ### Algorithm
 
@@ -21,20 +21,25 @@ public static final int TIMEOUT_MS = 10000;
 private int[] responseTimeBuckets = new int[TIMEOUT_MS];
 ```
 
-(2) To process a log file, iterate each log and increase the corresponding response time's
+(2) When processing a log file, iterate each log line by line and increase the corresponding response time's
 occurrence counter.
 
 PercentileCalculator.java:
 ```$java
-responseTimeBuckets[responseTimeMs]++;
+private void updateBuckets(String logFilePath) throws Exception {
+    //please refere this function
+}
+private void updateBucket(String log) throws Exception {
+    //please refer this function
+}
 ```
-(3) To get the latest percentiles, iterate all the response buckets, count up for the response
+(3) To update current percentiles, iterate all the response buckets, count up for the response
  time occurrence, if current percentage is over than the target percentage, it's the point of 
  percentile to be output
 
 PercentileCalculator.java:
 ```$java
-private int[] calcPercentilesFromBuckets() {
+private void updatePercentiles() {
     //please refer this function
 }
 ```
@@ -52,11 +57,45 @@ Response Time Buckets: `O(10000) = O(1)`
 Linux or Mac environment that can execute java(1.8) and gradle
 
 ### Run Demo (src/main/java/demo/Demo.java)
-This demo program will process log files in testcases and output the current percentiles
+This demo program will process log files in testcases folder and output the current percentiles
 ```$java
 ./gradlew build
 ./gradlew run
 ```
+
+#### Sample Output
+
+testcases:  
+5% response time in [5000, 10000] (ms)  
+95% response time in [500, 5000] (ms)
+
+```
+[testcase/2019-4-6.log]
+90% of requests return a response in 4805 ms
+95% of requests return a response in 5793 ms
+99% of requests return a response in 9071 ms
+
+[testcase/2019-4-5.log]
+90% of requests return a response in 4813 ms
+95% of requests return a response in 5814 ms
+99% of requests return a response in 9111 ms
+
+[testcase/2019-4-4.log]
+90% of requests return a response in 4812 ms
+95% of requests return a response in 5856 ms
+99% of requests return a response in 9145 ms
+
+[testcase/2019-4-3.log]
+90% of requests return a response in 4810 ms
+95% of requests return a response in 5860 ms
+99% of requests return a response in 9150 ms
+
+[testcase/2019-4-2.log]
+90% of requests return a response in 4807 ms
+95% of requests return a response in 5833 ms
+99% of requests return a response in 9157 ms 
+```
+
 ### Generate New Test Cases (src/main/java/util/TestcaseGenerator.java)
 Instead of using orignal test cases, you can also generate your own test cases.  
 There are some values to play with.  
@@ -82,39 +121,7 @@ To generate the new test cases:
 ./gradlew genTestcase
 ```
 
-### Sample Output
-5% response time in [5000, 10000] (ms)  
-95% response time in [500, 5000] (ms)
-
-```
-[2019-4-2.log]
-90% of requests return a response in 4789 ms
-95% of requests return a response in 5682 ms
-99% of requests return a response in 9174 ms
-
-[2019-4-3.log]
-90% of requests return a response in 4798 ms
-95% of requests return a response in 5804 ms
-99% of requests return a response in 9169 ms
-
-[2019-4-4.log]
-90% of requests return a response in 4803 ms
-95% of requests return a response in 5852 ms
-99% of requests return a response in 9184 ms
-
-[2019-4-5.log]
-90% of requests return a response in 4808 ms
-95% of requests return a response in 5850 ms
-99% of requests return a response in 9174 ms
-
-[2019-4-6.log]
-90% of requests return a response in 4807 ms
-95% of requests return a response in 5833 ms
-99% of requests return a response in 9157 ms
-```
-
-
-## Sources
+## Project Structure
 1. **src/main/java/calculator/PercentileCalculator.java:**  
 Percentiles Calculator.
 2. **src/main/java/demo/Demo.java:**  
