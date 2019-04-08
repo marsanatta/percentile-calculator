@@ -70,30 +70,35 @@ testcases:
 95% response time in [500, 5000] (ms)
 
 ```
-[testcase/2019-4-6.log]
-90% of requests return a response in 4805 ms
-95% of requests return a response in 5793 ms
-99% of requests return a response in 9071 ms
-
-[testcase/2019-4-5.log]
-90% of requests return a response in 4813 ms
-95% of requests return a response in 5814 ms
-99% of requests return a response in 9111 ms
-
-[testcase/2019-4-4.log]
-90% of requests return a response in 4812 ms
-95% of requests return a response in 5856 ms
-99% of requests return a response in 9145 ms
-
-[testcase/2019-4-3.log]
+Processing log file: testcase/2019-4-6.log
+Current percentiles:
 90% of requests return a response in 4810 ms
-95% of requests return a response in 5860 ms
-99% of requests return a response in 9150 ms
+95% of requests return a response in 5912 ms
+99% of requests return a response in 9168 ms
 
-[testcase/2019-4-2.log]
+Processing log file: testcase/2019-4-5.log
+Current percentiles:
 90% of requests return a response in 4807 ms
-95% of requests return a response in 5833 ms
-99% of requests return a response in 9157 ms 
+95% of requests return a response in 5776 ms
+99% of requests return a response in 9093 ms
+
+Processing log file: testcase/2019-4-4.log
+Current percentiles:
+90% of requests return a response in 4808 ms
+95% of requests return a response in 5824 ms
+99% of requests return a response in 9118 ms
+
+Processing log file: testcase/2019-4-3.log
+Current percentiles:
+90% of requests return a response in 4808 ms
+95% of requests return a response in 5838 ms
+99% of requests return a response in 9109 ms
+
+Processing log file: testcase/2019-4-2.log
+Current percentiles:
+90% of requests return a response in 4809 ms
+95% of requests return a response in 5840 ms
+99% of requests return a response in 9123 ms
 ```
 
 ### Generate New Test Cases (src/main/java/util/TestcaseGenerator.java)

@@ -29,7 +29,7 @@ public class TestcaseGenerator {
     public static String TESTCASE_DIR = "testcase/";
 
     public static void main(String[] args) {
-        LocalDateTime cur = LocalDateTime.ofInstant(Instant.ofEpochMilli(START_TIMESTAMP), ZoneId.systemDefault());
+        LocalDateTime cur = LocalDateTime.ofInstant(Instant.ofEpochMilli(START_TIMESTAMP), ZoneId.systemDefault()).toLocalDate().atStartOfDay();
         BufferedWriter writer = null;
         for (int i = 0; i < DAYS; i++) {
             String fileName = TESTCASE_DIR + cur.getYear() + "-" + cur.getMonthValue() + "-" + cur.getDayOfMonth() + ".log";
@@ -49,7 +49,7 @@ public class TestcaseGenerator {
                             + RandomHelper.getHttpCode(httpVerb).getCode() + " "
                             + RandomHelper.getResponseTime() + "\n";
                     writer.write(log);
-                    cur = cur.plusSeconds(RandomHelper.getNextRequestComeInSeconds());
+                    cur = cur.plusSeconds(RandomHelper.getNextRequestComesInSecs());
                 }
                 writer.close();
             } catch (IOException e) {

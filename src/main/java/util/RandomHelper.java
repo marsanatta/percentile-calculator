@@ -101,7 +101,7 @@ public class RandomHelper {
      * get next request appear time (in seconds)
      * @return
      */
-    public static int getNextRequestComeInSeconds() {
+    public static int getNextRequestComesInSecs() {
         return r.nextInt(MAX_NEXT_SECS - MIN_NEXT_SECS + 1) + MIN_NEXT_SECS;
     }
 }
