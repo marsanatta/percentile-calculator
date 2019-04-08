@@ -49,13 +49,13 @@ public class RandomHelper {
     }
 
     /**
-     * ABNORMAL_PERCENT% of response time in [MAX_RESPONSE_TIME, ABNORMAL_MAX_RESPONSE_TIME]
-     * 100 - ABNORMAL_PERCENT% of response times in [MIN_RESPONSE_TIME, MAX_RESPONSE_TIME]
+     * ABNORMAL_PERCENT% of response time in [MAX_RESPONSE_TIME_MS, ABNORMAL_MAX_RESPONSE_TIME_MS]
+     * 100 - ABNORMAL_PERCENT% of response times in [MIN_RESPONSE_TIME_MS, MAX_RESPONSE_TIME_MS]
      */
     public static final int ABNORMAL_PERCENT = 5;
-    public static final int ABNORMAL_MAX_RESPONSE_TIME = 10000;
-    public static final int MIN_RESPONSE_TIME = 500;
-    public static final int MAX_RESPONSE_TIME = 5000;
+    public static final int ABNORMAL_MAX_RESPONSE_TIME_MS = 10000;
+    public static final int MIN_RESPONSE_TIME_MS = 500;
+    public static final int MAX_RESPONSE_TIME_MS = 5000;
     /**
      * get random response time
      * @return
@@ -63,9 +63,9 @@ public class RandomHelper {
     public static int getResponseTime() {
         int rand = r.nextInt(100);
         if (rand <= ABNORMAL_PERCENT)
-            return r.nextInt(ABNORMAL_MAX_RESPONSE_TIME - MAX_RESPONSE_TIME + 1) + MAX_RESPONSE_TIME;
+            return r.nextInt(ABNORMAL_MAX_RESPONSE_TIME_MS - MAX_RESPONSE_TIME_MS + 1) + MAX_RESPONSE_TIME_MS;
         else
-            return r.nextInt(MAX_RESPONSE_TIME - MIN_RESPONSE_TIME + 1) + MIN_RESPONSE_TIME;
+            return r.nextInt(MAX_RESPONSE_TIME_MS - MIN_RESPONSE_TIME_MS + 1) + MIN_RESPONSE_TIME_MS;
     }
 
     /**

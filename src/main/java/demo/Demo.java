@@ -18,7 +18,7 @@ public class Demo {
         for (String logFilePath : logFilePaths) {
             System.out.println("[" + logFilePath + "]");
             printPercentiles(
-                    percentileCalculator.getPercentiles(TESTCASE_DIR + logFilePath)
+                    percentileCalculator.getCurrentPercentiles(TESTCASE_DIR + logFilePath)
             );
         }
     }

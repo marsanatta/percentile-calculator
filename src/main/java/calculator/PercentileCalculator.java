@@ -17,36 +17,46 @@ public class PercentileCalculator {
     public static final int[] PERCENTILES = {90, 95, 99};
 
     /**
-     * update the data from given log file
+     * update the response time buckets from given log file
      * return the latest percentiles
      *
      * @param logFilePath log file path
      * @return percentiles
      * @throws Exception
      */
-    public int[] getPercentiles(String logFilePath) throws Exception {
+    public int[] getCurrentPercentiles(String logFilePath) throws Exception {
+        updateResponseTimeBuckets(logFilePath);
+        return calcPercentilesFromBuckets();
+    }
+
+    /**
+     * process a log file and update response time buckets
+     *
+     * @param logFilePath log file path
+     * @throws Exception
+     */
+    private void updateResponseTimeBuckets(String logFilePath) throws Exception {
         File file = new File(logFilePath);
         try {
             FileReader fr = new FileReader(file);
             BufferedReader in = new BufferedReader(fr);
             String log;
             while ((log = in.readLine()) != null)
-                updateResponseTimeBuckets(log);
+                updateResponseTimeBucket(log);
         } catch (FileNotFoundException e) {
             System.out.println("File Not Found: " + e.getMessage());
         } catch (IOException e) {
             System.out.println("Error: " + e.getMessage());
         }
-        return calcPercentilesFromBuckets();
     }
 
     /**
-     * update the response time buckets
+     * process 1 log and update corresponding response time bucket
      *
      * @param log log format: IP_ADDRESS [timestamp] "HTTP_VERB URI" HTTP_ERROR_CODE RESPONSE_TIME_IN_MILLISECONDS
      * @throws Exception
      */
-    private void updateResponseTimeBuckets(String log) throws Exception {
+    private void updateResponseTimeBucket(String log) throws Exception {
         String[] parts = log.split(DELIMITER);
         if (parts.length != PARTS_LEN) {
             throw new Exception("Wrong input log:" + log);
