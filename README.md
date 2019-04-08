@@ -32,13 +32,13 @@ responseTimeBuckets[responseTimeMs]++;
  time occurrence, if current percentage is over than the target percentage, it's the point of 
  percentile to be output
 
-PercentileCalculator.java
+PercentileCalculator.java:
 ```$java
 private int[] calcPercentilesFromBuckets() {
     //please refer this function
 }
 ```
-###Complexity Analysis
+### Complexity Analysis
 #### Time Complexity
 step (2): `O(L)`, L: #log in a log file  
 step (3): `O(10000) = O(1)`, 10000 is the bucket size  
@@ -47,16 +47,16 @@ total: `O(NL)` if there are N log files
 #### Space Complexity
 Response Time Buckets: `O(10000) = O(1)`
 
-###How to Run the Demo?
-#### Prerequisite
+## How to Run the Demo?
+### Prerequisite
 Linux or Mac environment that can execute java(1.8) and gradle
 
-#### Run Demo (src/main/java/demo/Demo.java)
+### Run Demo (src/main/java/demo/Demo.java)
 ```$java
 ./gradlew build
 ./gradlew run
 ```
-#### Generate New Test Cases (src/main/java/util/TestcaseGenerator.java)
+### Generate New Test Cases (src/main/java/util/TestcaseGenerator.java)
 There are some values to play with. 
 
 in RandomHelper.java:
@@ -80,7 +80,7 @@ To generate the test case:
 ./gradlew genTestcase
 ```
 
-#### Sample Output
+### Sample Output
 5% response time in [5000, 10000] (ms)  
 95% response time in [500, 5000] (ms)
 
