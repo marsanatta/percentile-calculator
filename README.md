@@ -4,14 +4,14 @@ I modified the requirement to make it more practical.
 Rather than calculating all the logs every time, I create a function that
 takes a log file path as an input. The function calculates the p90, p95, p99 by calculating the input log
 combining with previous calculated logs' data, so that if new log file comes in, it don't have 
-to re-calculated previous log file again which is more efficient and practical. 
+to re-calculated previous log file again which is more efficient. 
 
 ### Assumptions
 Response time is range from `0~9999` ms  
 
 ### Algorithm
 
-Create respnose time buckets with index from 0~9999. The bucket's index represents
+Create response time buckets with index from 0~9999. The bucket's index represents
  the response time. The bucket's value is an integer represents the occurrence counter 
  for that response time.  
 
@@ -49,8 +49,8 @@ private void updateBucket(String log) throws Exception {
 ```
 #### Update Current Percentiles
 Iterate all the response buckets, count up for the response
- time occurrence, if current percentage is over than the target percentage, it's the point of 
- percentile to be output
+ time occurrence, if current percentage is over than the target percentage, it's the point
+ where the target percentile is.
 
 PercentileCalculator.java:
 ```$java
@@ -71,7 +71,7 @@ Response Time Buckets requires: `O(10000) = O(1)`
 Linux or Mac environment that can execute java(1.8) and gradle
 
 ### Run Demo (src/main/java/demo/Demo.java)
-This demo program will process log files in testcases folder and output the current percentiles
+This demo program processes log files in testcases folder and output the current percentiles
 ```$java
 ./gradlew build
 ./gradlew run
@@ -116,7 +116,7 @@ Current percentiles:
 ```
 
 ### Generate New Test Cases (src/main/java/util/TestcaseGenerator.java)
-Instead of using orignal test cases, you can also generate your own test cases.  
+Instead of using original test cases, you can also generate your own test cases.  
 There are some values to play with.  
 
 in RandomHelper.java:

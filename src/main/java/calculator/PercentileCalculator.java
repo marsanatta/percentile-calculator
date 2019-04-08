@@ -10,12 +10,14 @@ import java.io.IOException;
 
 public class PercentileCalculator {
     public static final int TIMEOUT_MS = 10000;
-    private int[] responseTimeBuckets = new int[TIMEOUT_MS];
     public static final int PARTS_LEN = 6;
     public static final String DELIMITER = " ";
-    private int responseTimeTotalCnt = 0;
     public static final int[] PERCENTILES = {90, 95, 99};
+
     public int percentiles[] = new int[PERCENTILES.length];
+
+    private int[] responseTimeBuckets = new int[TIMEOUT_MS];
+    private int responseTimeTotalCnt = 0;
 
     /**
      * update the response time buckets from given log file

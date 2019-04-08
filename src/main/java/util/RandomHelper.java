@@ -3,11 +3,14 @@ package util;
 import java.util.Random;
 
 public class RandomHelper {
+
+    private static int IP_MAX = 256;
+    private static int IPV4_LEN = 4;
+    private static Random r = new Random();
+
     private RandomHelper() {
         //static utility class
     }
-    private static int IPV4_LEN = 4;
-    private static Random r = new Random();
 
     /**
      * get random ip
@@ -16,7 +19,7 @@ public class RandomHelper {
     public static String getIp() {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < IPV4_LEN; i++) {
-            sb.append(r.nextInt(256));
+            sb.append(r.nextInt(IP_MAX));
             if (i < IPV4_LEN - 1)
                 sb.append('.');
         }

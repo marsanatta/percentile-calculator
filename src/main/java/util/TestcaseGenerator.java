@@ -21,11 +21,13 @@ import static util.HttpVerb.POST;
  *  10.2.3.4 [2018/13/10:14:02:39] "GET /api/playeritems?playerId=3" 200 1230
  */
 public class TestcaseGenerator {
-    private static final long START_TIMESTAMP = 1554163200000L;
+    private static final long START_TIMESTAMP = 1554163200000L; //2019-4-2
     private static final int DAYS = 5;
+
     private static DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd:HH:mm:ss").withZone(ZoneOffset.UTC);
     private static String URL = "/api/playeritems";
     private static String PARAM = "?playerId=";
+
     public static String TESTCASE_DIR = "testcase/";
 
     public static void main(String[] args) {
