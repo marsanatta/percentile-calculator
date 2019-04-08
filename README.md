@@ -41,7 +41,7 @@ Create response time buckets with index from 0~9999. The bucket's index represen
  for that response time.  
 
 PercentileCalculator.java:
-```$java
+```java
 public static final int TIMEOUT_MS = 10000;
 private int[] responseTimeBuckets = new int[TIMEOUT_MS];
 ```
@@ -51,7 +51,7 @@ Process a log file contains two operations:
 2. Update current percentiles
 
 PercentileCalculator.java:
-```$java
+```java
 public void processLogFile(String logFilePath) throws Exception {
     updateBuckets(logFilePath);
     updatePercentiles();
@@ -64,7 +64,7 @@ Iterate each log line by line and increase the corresponding response time's
 occurrence counter.
 
 PercentileCalculator.java:
-```$java
+```java
 private void updateBuckets(String logFilePath) throws Exception {
     //please refere this function
 }
@@ -78,7 +78,7 @@ Iterate all the response buckets, and count up for the response
  where the target percentile is.
 
 PercentileCalculator.java:
-```$java
+```java
 private void updatePercentiles() {
     //please refer this function
 }
@@ -97,7 +97,7 @@ Linux or Mac environment that can execute java(1.8) and gradle
 
 ### Run Demo (src/main/java/demo/Demo.java)
 This demo program processes log files in testcases folder and output the current percentiles
-```$java
+```shell
 ./gradlew build
 ./gradlew run
 ```
@@ -145,7 +145,7 @@ Instead of using original test cases, you can also generate your own test cases.
 There are some values to play with.  
 
 in RandomHelper.java:
-```$xslt
+```java
 /**
  * ABNORMAL_PERCENT% of response times are in range [MAX_RESPONSE_TIME_MS, ABNORMAL_MAX_RESPONSE_TIME_MS]
  * 100 - ABNORMAL_PERCENT% of response times are in range [MIN_RESPONSE_TIME_MS, MAX_RESPONSE_TIME_MS]
@@ -160,7 +160,7 @@ The above settings means:
 95% response time in [500, 5000] (ms)
 
 To generate the new test cases:
-```$java
+```shell
 ./gradlew build
 ./gradlew genTestcase
 ```
