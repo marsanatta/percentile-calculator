@@ -11,7 +11,7 @@ Response time is range from `0~9999` ms
 
 ### Algorithm
 
-(1) Create respnose time buckets with index from 0~9999. The bucket's index represents
+Create respnose time buckets with index from 0~9999. The bucket's index represents
  the response time. The bucket's value is an integer represents the occurrence counter 
  for that response time.  
 
@@ -21,7 +21,21 @@ public static final int TIMEOUT_MS = 10000;
 private int[] responseTimeBuckets = new int[TIMEOUT_MS];
 ```
 
-(2) When processing a log file, iterate each log line by line and increase the corresponding response time's
+Process a log file contains two operations:
+1. Update response time buckets
+2. Update current percentiles
+
+PercentileCalculator.java:
+```$java
+public void processLogFile(String logFilePath) throws Exception {
+    updateBuckets(logFilePath);
+    updatePercentiles();
+}
+
+```
+
+#### Update Response Time Buckets
+Iterate each log line by line and increase the corresponding response time's
 occurrence counter.
 
 PercentileCalculator.java:
@@ -33,7 +47,8 @@ private void updateBucket(String log) throws Exception {
     //please refer this function
 }
 ```
-(3) To update current percentiles, iterate all the response buckets, count up for the response
+#### Update Current Percentiles
+Iterate all the response buckets, count up for the response
  time occurrence, if current percentage is over than the target percentage, it's the point of 
  percentile to be output
 
@@ -45,12 +60,11 @@ private void updatePercentiles() {
 ```
 ### Complexity Analysis
 #### Time Complexity
-step (2): `O(L)`, L: #log in a log file  
-step (3): `O(10000) = O(1)`, 10000 is the bucket size  
-total: `O(NL)` if there are N log files
+Update Response Time Buckets: `O(L)`, L: #log in a log file  
+Update Percentiles: `O(10000) = O(1)`, 10000 is the bucket size  
 
 #### Space Complexity
-Response Time Buckets: `O(10000) = O(1)`
+Response Time Buckets requires: `O(10000) = O(1)`
 
 ## How to Run the Demo?
 ### Prerequisite
