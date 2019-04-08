@@ -8,7 +8,7 @@ to re-calculated previous log file again which is more efficient.
 
 ### Percentile Calculator Class
 The main class is PercentileCalculator  
-2 public APIs is exposed:
+2 public APIs are exposed:
 - **processLogFile(String logFilePath)** processes the log file and update the current percentiles
 - **printPercentiles()**
 print the percentiles (p90, p95, p99) according to the requirement
