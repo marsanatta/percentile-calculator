@@ -3,7 +3,7 @@
 I modified the requirement to make it more practical.
 Rather than calculating all log files every time, I create a function that
 takes a log file path as an input. The function calculates the p90, p95, p99 by calculating the input log
-combining with previous calculated logs' data, so that if new log file comes in, it don't have 
+combining with previous calculated logs' data, so that if new log file comes in, it does't have 
 to re-calculated previous log file again which is more efficient.   
 
 ### Percentile Calculator Class
