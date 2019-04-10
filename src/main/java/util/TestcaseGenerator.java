@@ -58,21 +58,8 @@ public class TestcaseGenerator {
                 System.out.println("IOException: " + e.getMessage());
                 return;
             } finally {
-                close(writer);
+                IOUtil.close(writer);
             }
-        }
-    }
-
-    /**
-     * quietly close
-     * @param c closable
-     */
-    public static void close(Closeable c) {
-        if (c == null) return;
-        try {
-            c.close();
-        } catch (IOException e) {
-            System.out.println("close failed:" + e.getMessage());
         }
     }
 

@@ -1,6 +1,7 @@
 package calculator;
 
 import util.HttpVerb;
+import util.IOUtil;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -46,16 +47,19 @@ public class PercentileCalculator {
      */
     private void updateBuckets(String logFilePath) throws Exception {
         File file = new File(logFilePath);
+        BufferedReader br = null;
         try {
             FileReader fr = new FileReader(file);
-            BufferedReader in = new BufferedReader(fr);
+            br = new BufferedReader(fr);
             String log;
-            while ((log = in.readLine()) != null)
+            while ((log = br.readLine()) != null)
                 this.updateBucket(log);
         } catch (FileNotFoundException e) {
             System.out.println("File Not Found: " + e.getMessage());
         } catch (IOException e) {
             System.out.println("Error: " + e.getMessage());
+        } finally {
+            IOUtil.close(br);
         }
     }
 
