@@ -73,7 +73,7 @@ private void updateBucket(String log) throws Exception {
 }
 ```
 ### Update Current Percentiles
-Iterate all the response buckets, and count up for the response
+Iterate all the response time buckets, and count up for the response
  time occurrence. If current percentage is over than the target percentage, it's the point
  where the target percentile is.
 
